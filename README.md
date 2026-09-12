@@ -1,311 +1,366 @@
-# Research Funding & Innovation Intelligence Platform
+# 🌐 Research Funding & Innovation Intelligence Platform
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
-[![Tests Status](https://img.shields.io/badge/tests-33%2F33%20passing%20(100%25)-success.svg)]()
-[![Python Version](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)]()
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg)]()
-[![React](https://img.shields.io/badge/React-18+-61DAFB.svg)]()
-[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)]()
+<div align="center">
 
-An enterprise-grade, AI-powered platform designed for research institutions, universities, deep-tech startups, and innovation offices. The system enables automated funding opportunity discovery, research and publication trend analytics, patent landscape intelligence, technology readiness assessment, and commercialization pathway recommendation.
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg?style=for-the-badge&logo=github-actions)]()
+[![Tests Status](https://img.shields.io/badge/tests-31%2F31%20passing%20(100%25)-success.svg?style=for-the-badge&logo=pytest)]()
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg?style=for-the-badge&logo=fastapi&logoColor=white)]()
+[![React](https://img.shields.io/badge/React-18+-61DAFB.svg?style=for-the-badge&logo=react&logoColor=black)]()
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791.svg?style=for-the-badge&logo=postgresql&logoColor=white)]()
+[![MongoDB](https://img.shields.io/badge/MongoDB-8.0-47A248.svg?style=for-the-badge&logo=mongodb&logoColor=white)]()
+[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED.svg?style=for-the-badge&logo=docker&logoColor=white)]()
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)]()
+
+**An enterprise-grade, full-stack intelligence platform uniting academic research, patent commercialization, grant funding discovery, and technology trend forecasting.**
+
+[Live Demo](#-quickstart--deployment) • [Architecture](#-system-architecture) • [API Documentation](#-api-endpoints--contracts) • [Milestone Matrix](#-milestone-deliverables--audit)
+
+</div>
 
 ---
 
 ## 📑 Table of Contents
-- [System Architecture & Capabilities](#-system-architecture--capabilities)
-- [Milestones & Core Feature Breakdown](#-milestones--core-feature-breakdown)
-- [Technology Stack](#️-technology-stack)
+- [Executive Overview](#-executive-overview)
+- [Key Platform Capabilities](#-key-platform-capabilities)
+- [System Architecture](#-system-architecture)
+- [Milestone Deliverables & Audit](#-milestone-deliverables--audit)
+- [Algorithmic Intelligence Models](#-algorithmic-intelligence-models)
+- [Technology Stack](#-technology-stack)
 - [Repository Structure](#-repository-structure)
-- [Getting Started & Installation](#-getting-started--installation)
-- [API Documentation & Endpoints](#-api-documentation--endpoints)
-- [Test Suite & Quality Assurance](#-test-suite--quality-assurance)
-- [Configuration & Environment Variables](#-configuration--environment-variables)
-- [License & Contributions](#-license--contributions)
+- [Quickstart & Deployment](#-quickstart--deployment)
+  - [Docker Compose Deployment (Recommended)](#1-docker-compose-deployment-recommended)
+  - [Local Development Setup](#2-local-development-setup)
+- [API Endpoints & Contracts](#-api-endpoints--contracts)
+- [Automated Testing & QA](#-automated-testing--qa)
+- [Security & RBAC Specifications](#-security--rbac-specifications)
+- [License & Attribution](#-license--attribution)
 
 ---
 
-## 🏛 System Architecture & Capabilities
+## 🎯 Executive Overview
+
+The **Research Funding & Innovation Intelligence Platform** bridges the critical divide between scientific research, intellectual property commercialization, and capital allocation. 
+
+Traditional academic and venture workflows operate in isolated silos: researchers spend hundreds of hours manually searching fragmented grant portals, technology transfer offices lack real-time patent landscape visibility, and innovation managers struggle to assess the market readiness of emerging breakthroughs. 
+
+This platform centralizes the research innovation lifecycle into a unified intelligence portal featuring:
+1. **Multi-Source Grant Intelligence**: Dynamic profile matching across government, venture, and council funding calls.
+2. **Global Literature & Patent Discovery**: Live federated queries across OpenAlex, arXiv, CrossRef, Semantic Scholar, and USPTO databases.
+3. **5-Pillar Innovation Index & Commercialization Advisor**: Quantitative technology readiness evaluation (**TRL 1–9**) and automated technology transfer roadmaps (Licensing vs. Startup Spin-off).
+4. **InnovaAI Co-Pilot**: Context-aware floating AI assistant for cross-dataset synthesis.
+
+---
+
+## 💡 Key Platform Capabilities
+
+### 🔐 Persona-Driven Role-Based Access Control (RBAC)
+* **Researcher**: Academic profile tracking, publication bookmarking, career milestones, and personalized grant discovery.
+* **Startup Founder**: Deep-tech patent landscape exploration, venture capital catalysts, and accelerator matching.
+* **Innovation Manager**: Technology lifecycle velocity monitoring, citation impact analytics, and research hotspot identification.
+* **Administrator**: User role elevation, system telemetry monitoring, and grant opportunity provisioning.
+
+### 📚 Literature & Intellectual Property Intelligence
+* **Live Academic Search**: Federated querying connecting OpenAlex, arXiv, CrossRef, and Semantic Scholar with DOI resolution.
+* **Patent Landscape Analytics**: Clustering by technology classification, filing velocity trends, prior art overlap analysis, and assignee profiling.
+
+### 💰 Intelligent Grant Matching Engine
+* **6 Funding Streams**: Government Grants, Research Councils, Innovation Funds, Startup Accelerators, Venture Programs, and International Agencies.
+* **Dynamic Fit Scoring**: Normalized (0–100%) score computed from research domains, career stage, geography, and thematic overlap.
+* **Interactive Grant Submission**: In-app proposal submission portal with direct links to official awarding agency portals.
+
+---
+
+## 🏗️ System Architecture
 
 ```mermaid
-graph TD
-    A[React 18 SPA Frontend] -->|REST / JWT Auth| B[FastAPI Backend Gateway]
-    B --> C[Auth & RBAC Module]
-    B --> D[Grant Matching Engine]
-    B --> E[Patent & Technology Intelligence Engine]
-    B --> F[Innovation Scoring & Commercialization Engine]
-    
-    C --> G[(PostgreSQL / SQLite Base)]
-    D --> G
-    E --> G
-    F --> G
-    
-    D --> H[Multi-Source Academic APIs: OpenAlex / arXiv / CrossRef]
-    E --> I[Patent Databases: USPTO / Lens / WIPO]
-    B --> J[(MongoDB Document Store)]
-```
+graph TB
+    subgraph Client Tier ["Frontend (React 18 + Vite)"]
+        UI[Glassmorphic Responsive SPA]
+        Router[Protected RBAC Routing]
+        AICoPilot[InnovaAI Co-Pilot Drawer]
+        ThemeEngine[Dynamic Theme Engine]
+    end
 
-The platform unifies three critical intelligence domains into a single high-performance pipeline:
-1. **Grant Intelligence**: Matches research profiles to global grant and funding opportunities using a multi-criteria weighted scoring algorithm.
-2. **IP & Patent Intelligence**: Analyzes patent landscape, citation networks, competitor activity, and technology lifecycle maturity stages.
-3. **Innovation & Commercialization Engine**: Evaluates commercial readiness through a 5-pillar Innovation Scoring model (0–100) and produces actionable technology transfer roadmaps (Licensing vs. Startup Spin-off).
+    subgraph Gateway Tier ["API Gateway (FastAPI 0.115+)"]
+        AuthGuard[OAuth2 & Argon2id Security Guard]
+        GrantEngine[Weighted Grant Matching Engine]
+        PatentEngine[Patent & Technology Readiness Engine]
+        ScoringEngine[5-Pillar Innovation Scoring Engine]
+        Telemetry[System Health & Telemetry]
+    end
+
+    subgraph Data Tier ["Dual Persistence Layer"]
+        PG[(PostgreSQL Relational DB)]
+        MDB[(MongoDB Document Store)]
+    end
+
+    subgraph External Tier ["Federated Research Datasets"]
+        OA[OpenAlex REST API]
+        AX[arXiv OAI-PMH API]
+        CR[CrossRef Metadata API]
+        SS[Semantic Scholar Graph API]
+        PTO[USPTO / Google Patents API]
+    end
+
+    UI --> Router
+    Router -->|Bearer JWT| AuthGuard
+    AICoPilot -->|REST / Async| GatewayTier
+    
+    AuthGuard --> GrantEngine
+    AuthGuard --> PatentEngine
+    AuthGuard --> ScoringEngine
+    
+    GrantEngine --> PG
+    PatentEngine --> PG
+    ScoringEngine --> PG
+    GatewayTier --> MDB
+    
+    PatentEngine --> PTO
+    GrantEngine --> OA
+    GrantEngine --> AX
+    GrantEngine --> CR
+    GrantEngine --> SS
+```
 
 ---
 
-## 🎯 Milestones & Core Feature Breakdown
+## 📊 Milestone Deliverables & Audit
 
-### 🔹 Milestone 1: Authentication, RBAC & Researcher Profiles
-* **Secure Authentication**: OAuth2 Password flow and JWT Bearer token authentication with SHA-256 password hashing.
-* **Role-Based Access Control (RBAC)**: Fine-grained permissions across four distinct personas:
-  * `Researcher`
-  * `Startup Founder`
-  * `Innovation Manager`
-  * `Administrator`
-* **Comprehensive Research Profiles**: Rich researcher profiles containing domains of expertise, keywords, academic publications, patent holdings, technology areas, and career history.
+| Milestone | Modules & Scope | Status | Deliverables |
+| :--- | :--- | :---: | :--- |
+| **Milestone 1** | **Authentication, RBAC & Researcher Profiles** | `100% PASS` | Argon2id password hashing, OAuth2 Password-form flow, JWT Bearer tokens, 4 distinct roles, Profile CRUD, OpenAlex literature integration, and Patent provider abstractions. |
+| **Milestone 2** | **Multi-Source Funding & Trend Intelligence** | `100% PASS` | 6 funding stream aggregators, 5-criteria weighted grant matching engine, dynamic match percentage calculation, topic velocity growth bar charts, and citation hotspot analytics. |
+| **Milestone 3** | **Patent Landscape, TRL & Commercialization** | `100% PASS` | Patent clustering, filing velocity curves, Technology Readiness Levels (**TRL 1–9**), 5-pillar Innovation Index (0–100), and Spin-off vs. Licensing commercialization advisor. |
+| **Milestone 4** | **System Integration, AI Co-Pilot & DevOps** | `100% PASS` | Full platform routing integration, InnovaAI Co-Pilot assistant drawer, Admin management portal, Docker Compose containerization, and 31/31 Pytest automated test pass. |
 
-### 🔹 Milestone 2: Multi-Source Funding Discovery & Grant Matching Engine
-* **Multi-Source Opportunity Aggregation**: Automatic aggregation of grants across government councils, research foundations, enterprise innovation funds, and venture programs.
-* **5-Criteria Weighted Matching Rules Engine**:
-  * **Research Domain Fit**: 35%
-  * **Career Stage Eligibility**: 25%
-  * **Geographical Eligibility**: 25%
-  * **Funding Type Preference**: 15%
-  * **Strict Deadline Filtering**: Automated exclusion of expired funding calls.
-* **Research Trend Analytics**: Topic emergence analysis, hotspot detection, and citation velocity modeling.
+---
 
-### 🔹 Milestone 3: Patent Landscape, Technology Readiness & Commercialization
-* **Patent Landscape Intelligence**: Keyword & semantic patent searching, filing velocity tracking, patent clustering, prior art overlap analysis, and key assignee profiling.
-* **Technology Lifecycle & Readiness Engine**: Classifies domain maturity across 4 lifecycle stages (`Emerging`, `Growth`, `Mature`, `Declining`) with Technology Readiness Level mapping (**TRL 1–9**).
-* **5-Pillar Weighted Innovation Scoring (0–100)**:
-  * **Research Novelty**: 30%
-  * **Patent Strength**: 20%
-  * **Market Potential**: 20%
-  * **Technology Maturity**: 15%
-  * **Funding Relevance**: 15%
-* **Technology Transfer & Commercialization Advisor**: Automated generation of commercialization recommendations, licensing terms, spin-off roadmaps, and industry partnership identification.
+## 🧮 Algorithmic Intelligence Models
+
+### 1. Multi-Criteria Grant Fit Scoring
+The grant matching engine computes match confidence across four distinct dimensions:
+
+$$\text{Fit Score} = (0.35 \times S_{\text{domain}}) + (0.25 \times S_{\text{career}}) + (0.25 \times S_{\text{geo}}) + (0.15 \times S_{\text{type}})$$
+
+* $S_{\text{domain}}$: Jaccard keyword and domain token intersection between researcher tags and grant eligibility.
+* Expired deadline filter automatically purges outdated opportunities.
+
+### 2. 5-Pillar Innovation Index (0–100)
+Evaluates deep-tech and academic projects for commercial investment readiness:
+
+$$\text{Innovation Index} = (0.30 \times \text{Novelty}) + (0.20 \times \text{Patent Strength}) + (0.20 \times \text{Market Potential}) + (0.15 \times \text{TRL Readiness}) + (0.15 \times \text{Funding Alignment})$$
+
+### 3. Research Topic Emergence & Hotspot Velocity
+Quantifies field acceleration by measuring volume acceleration weighted by citation impact:
+
+$$\text{Hotspot Score} = (\text{Growth Velocity} \times 0.60) + (\text{Mean Citation Impact} \times 0.40)$$
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Layer | Technologies |
-| :--- | :--- |
-| **Frontend UI** | React 18, Vite, Modern Responsive Glassmorphic CSS, React Icons, Lucide Icons, Axios |
-| **Backend API** | Python 3.11+, FastAPI, Pydantic V2, Uvicorn, SQLAlchemy 2.0 ORM |
-| **Databases** | PostgreSQL 16 (Relational), SQLite (Zero-config local fallback), MongoDB 7+ (Document store) |
-| **Integrations** | OpenAlex, CrossRef, Semantic Scholar, arXiv, USPTO, WIPO Provider Abstractions |
-| **DevOps & QA** | PyTest (100% Suite Pass), Docker, Docker Compose |
+| Layer | Technology | Rationale |
+| :--- | :--- | :--- |
+| **Frontend Framework** | **React 18 + Vite** | High-performance SPA with fast HMR and optimized asset bundling. |
+| **Design System** | **Glassmorphic Vanilla CSS + Lucide / React Icons** | Curated HSL design tokens, responsive layout grid, persistent Light/Dark themes. |
+| **Backend API** | **FastAPI (Python 3.13 / 3.12 / 3.11)** | High-throughput asynchronous REST gateway with auto-generated OpenAPI docs. |
+| **ORM & Database** | **SQLAlchemy 2.0 + PostgreSQL 16 / SQLite** | Type-safe declarative relational models with automated schema migrations. |
+| **Document Store** | **MongoDB 8.0 / PyMongo** | High-throughput telemetry, search query caching, and raw JSON payload dumps. |
+| **Authentication** | **Argon2id + OAuth2 + PyJWT** | GPU-resistant password hashing and cryptographically signed JWT Bearer tokens. |
+| **DevOps & Testing** | **Docker, Docker Compose, Pytest** | Reproducible multi-container runtime and 100% automated test verification. |
 
 ---
 
 ## 📁 Repository Structure
 
 ```text
-Research_Funding_Innovation/
-├── backend/
-│   ├── app/
-│   │   ├── api/             # API v1 route controllers (auth, profile, assets, funding, trends, admin)
-│   │   ├── core/            # Security, JWT tokens, application configuration
-│   │   ├── db/              # SQLAlchemy declarative base, session makers, engine configuration
-│   │   ├── dependencies/    # Auth token decoding and role-based permissions guards
-│   │   ├── integrations/    # External academic and patent API clients
-│   │   ├── models/          # Modular model re-exports
-│   │   ├── schemas/         # Pydantic request and response schemas
-│   │   └── services/        # Business logic for auth, assets, profile, and funding
-│   ├── routers/             # Integrated routers for grants, technology, scoring, and patents
-│   ├── services/            # Grant matching, technology intelligence, and innovation scoring engines
-│   ├── tests/               # Pytest automated test suites
-│   ├── database.py          # Unified database connection & migration manager
-│   ├── models.py            # Canonical SQLAlchemy ORM models registry
-│   ├── main.py              # Root backend entrypoint
-│   ├── test_member6_backend.py # Standalone verification runner for patent & tech routes
-│   └── test_pub_search.py   # Standalone verification runner for publication discovery
-├── frontend/
-│   ├── src/
-│   │   ├── api/             # Backend API client interfaces
-│   │   ├── components/      # UI components (Modals, scoring gauges, patent charts, grant cards)
-│   │   ├── context/         # React Auth context and session management
-│   │   ├── pages/           # Platform dashboards (Funding, Research, Patents, Technology, Scoring)
-│   │   └── styles/          # Responsive styling and CSS design system
-│   └── package.json
+Research_Funding_Innovation_Platform/
+├── docker-compose.yml               # Root Docker Compose orchestrator
+├── Research_Funding_Innovation/
+│   ├── backend/
+│   │   ├── app/
+│   │   │   ├── api/                 # Milestone 1 & 2 API route controllers
+│   │   │   ├── core/                # Security, JWT, and application configuration
+│   │   │   ├── db/                  # SQLAlchemy engine & session factories
+│   │   │   ├── dependencies/        # OAuth2 token decoder and RBAC guards
+│   │   │   ├── integrations/        # External dataset API clients (OpenAlex, USPTO)
+│   │   │   ├── models/              # Canonical database entities
+│   │   │   ├── schemas/             # Pydantic validation schemas
+│   │   │   └── services/            # Core business & matching logic
+│   │   ├── routers/                 # Milestone 2 & 3 modular routers
+│   │   ├── services/                # Grant matching, technology & scoring engines
+│   │   ├── tests/                   # Automated Pytest test suite (31 tests)
+│   │   ├── database.py              # Auto-healing database migrations
+│   │   ├── models.py                # Unified SQLAlchemy ORM registry
+│   │   ├── main.py                  # Backend application gateway entrypoint
+│   │   ├── requirements.txt         # Production backend dependencies
+│   │   └── Dockerfile               # Backend container definition
+│   ├── frontend/
+│   │   ├── src/
+│   │   │   ├── api/                 # Backend API client connectors
+│   │   │   ├── components/          # Reusable UI components & AI Co-Pilot Drawer
+│   │   │   ├── context/             # React Auth & Theme state contexts
+│   │   │   ├── pages/               # Application dashboards (Funding, Patents, etc.)
+│   │   │   └── styles/              # Global glassmorphism stylesheet & tokens
+│   │   ├── package.json             # Frontend dependencies and build scripts
+│   │   └── Dockerfile               # Frontend container definition
+│   ├── data/                        # Verified fallback dataset snapshots
+│   ├── docs/                        # Architecture, API, and Presentation Guides
+│   └── README.md
 └── README.md
 ```
 
 ---
 
-## 🚀 Getting Started & Installation
+## 🚀 Quickstart & Deployment
 
-### Prerequisites
-* **Python 3.11+** installed
-* **Node.js 18+ / 20+** and `npm` installed
-* *(Optional)* PostgreSQL & MongoDB running locally (The platform includes automated SQLite fallback for instant setup).
+### 1. Docker Compose Deployment (Recommended)
+
+To spin up all services (**Frontend**, **Backend API**, **PostgreSQL**, and **MongoDB**) in a single command:
+
+```powershell
+# From the repository root:
+docker-compose up --build -d
+```
+
+#### Container Endpoints:
+* 💻 **Web Application Portal**: [http://localhost:5173](http://localhost:5173)
+* ⚙️ **Interactive Swagger API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
+* 📖 **ReDoc Documentation**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+* 🩺 **Backend Health Telemetry**: [http://localhost:8000/health](http://localhost:8000/health)
+
+To view live container logs:
+```powershell
+docker-compose logs -f
+```
 
 ---
 
-### 1. Backend Setup
+### 2. Local Development Setup
 
-```bash
-# Navigate to backend directory
-cd backend
+#### Backend Setup:
+```powershell
+cd Research_Funding_Innovation/backend
 
-# Create and activate virtual environment
+# Create and activate Python virtual environment
 python -m venv .venv
-
-# Windows:
-.venv\Scripts\activate
-# macOS / Linux:
-source .venv/bin/activate
+.venv\Scripts\activate       # On macOS/Linux: source .venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Launch FastAPI backend server
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
+# Start FastAPI server with live reloading
+python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-* **Interactive Swagger UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-* **ReDoc Documentation**: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
-* **System Health Check**: [http://127.0.0.1:8000/health](http://127.0.0.1:8000/health)
+#### Frontend Setup:
+```powershell
+cd Research_Funding_Innovation/frontend
 
----
-
-### 2. Frontend Setup
-
-```bash
-# In a new terminal, navigate to frontend directory
-cd frontend
-
-# Install node dependencies
+# Install dependencies
 npm install
 
 # Start Vite development server
 npm run dev
 ```
 
-* **Web Application UI**: [http://localhost:5173](http://localhost:5173)
+---
+
+## 📖 API Endpoints & Contracts
+
+### 🔐 Authentication & Profile Management
+| Method | Route | Description | Permissions |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/v1/auth/register` | Register new user account | Public |
+| `POST` | `/api/v1/auth/login` | Authenticate and obtain JWT Bearer token | Public |
+| `GET` | `/api/v1/auth/me` | Fetch authenticated user session profile | Authenticated |
+| `GET` | `/api/v1/profile` | Retrieve comprehensive researcher profile | Authenticated |
+| `PUT` | `/api/v1/profile` | Update profile academic credentials and bio | Authenticated |
+| `POST` | `/api/v1/profile/keywords` | Append research interest keywords | Authenticated |
+
+### 💰 Funding & Grant Intelligence
+| Method | Route | Description | Permissions |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/v1/funding/opportunities` | Search funding opportunities with source filters | Public |
+| `GET` | `/api/v1/funding/recommendations`| Retrieve personalized profile grant matches | Authenticated |
+| `GET` | `/api/v1/funding/alerts` | Get approaching deadline funding alerts | Authenticated |
+| `POST` | `/api/v1/profile/funding/{id}` | Bookmark / save opportunity to research profile | Authenticated |
+| `POST` | `/api/v1/funding/opportunities` | Create new grant program | Administrator |
+
+### 🔬 Patent Landscape & Innovation Scoring
+| Method | Route | Description | Permissions |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/patents/search` | Search patent catalog by query and classification | Public |
+| `GET` | `/api/patents/clusters` | Retrieve patent landscape cluster intelligence | Public |
+| `GET` | `/api/patents/trends` | Fetch annual filing velocity trends | Public |
+| `GET` | `/api/technology/maturity` | Retrieve domain lifecycle stage & TRL level | Public |
+| `POST` | `/api/scoring/calculate` | Calculate 5-pillar Innovation Index (0–100) | Public |
+| `POST` | `/api/commercialization/recommendations` | Generate spin-off vs. licensing roadmap | Public |
 
 ---
 
-## 📖 API Documentation & Endpoints
+## 🧪 Automated Testing & QA
 
-### 🔐 Authentication & Profile (`/api/v1`)
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/v1/auth/register` | Register new user account | No |
-| `POST` | `/api/v1/auth/login` | Authenticate user and receive JWT bearer token | No |
-| `GET` | `/api/v1/auth/me` | Fetch authenticated user profile | Yes |
-| `GET` | `/api/v1/profile` | Retrieve comprehensive researcher profile | Yes |
-| `PUT` | `/api/v1/profile` | Update profile details and research domain | Yes |
-| `POST` | `/api/v1/profile/keywords` | Add research interest keywords | Yes |
-| `POST` | `/api/v1/profile/research-history` | Record academic/career milestone | Yes |
+The repository includes a comprehensive test suite executed via Pytest:
 
-### 💰 Funding & Grant Matching (`/api` & `/api/v1`)
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/grants/opportunities` | Search funding opportunities with filters | No |
-| `POST` | `/api/grants/match` | Calculate grant match score against a researcher profile | Yes |
-| `PUT` | `/api/grants/matching-rules` | Dynamically update grant matching criteria weights | Admin |
-| `GET` | `/api/v1/funding/recommendations` | Get personalized grant recommendations | Yes |
-| `POST` | `/api/v1/funding/{id}/bookmark` | Bookmark funding opportunity | Yes |
-
-### 🔬 IP, Technology Intelligence & Scoring (`/api` & `/api/v1`)
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/patents/search` | Search patents by query, provider, and domain | No |
-| `GET` | `/api/patents/clusters` | Retrieve patent landscape cluster intelligence | No |
-| `GET` | `/api/patents/trends` | Fetch patent filing velocity and trends | No |
-| `GET` | `/api/technology/emerging` | Discover high-growth emerging technologies | No |
-| `GET` | `/api/technology/maturity` | Retrieve TRL level and lifecycle stage | No |
-| `GET` | `/api/technology/competitors` | Competitor patent holdings and market shares | No |
-| `POST` | `/api/scoring/calculate` | Calculate 5-pillar Innovation Score (0–100) | No |
-| `POST` | `/api/commercialization/recommendations` | Generate technology transfer & startup advisory | No |
-
----
-
-## 🧪 Test Suite & Quality Assurance
-
-The backend repository contains a test suite verifying data integrity, relationship mappings, permissions, and business logic.
-
-```bash
-# Run complete test suite (33 tests)
-cd backend
-pytest -v
+```powershell
+cd Research_Funding_Innovation/backend
+python -m pytest -v
 ```
 
 ### Test Suite Summary:
 ```text
-test_member6_backend.py::test_endpoints PASSED                           [  3%]
-test_pub_search.py::test_publications PASSED                             [  6%]
-tests/test_assets.py::test_publication_search_mock PASSED                [  9%]
-tests/test_assets.py::test_publication_save_duplicate PASSED             [ 12%]
-tests/test_assets.py::test_patent_search_and_save PASSED                 [ 15%]
-tests/test_assets.py::test_publication_empty_search PASSED               [ 18%]
-tests/test_assets.py::test_publication_provider_failure PASSED           [ 21%]
-tests/test_assets.py::test_patent_provider_failure PASSED                [ 24%]
-tests/test_auth.py::test_registration_and_duplicate PASSED               [ 27%]
-tests/test_auth.py::test_login_and_me PASSED                             [ 30%]
-tests/test_auth.py::test_bad_password_and_tokens PASSED                  [ 33%]
-tests/test_auth.py::test_admin_rbac PASSED                               [ 36%]
-tests/test_auth.py::test_researcher_cannot_admin PASSED                  [ 39%]
-tests/test_funding.py::test_funding_list_and_search PASSED               [ 42%]
-tests/test_funding.py::test_personalized_recommendations_and_alerts PASSED [ 45%]
-tests/test_funding.py::test_admin_create_funding_opportunity PASSED      [ 48%]
-tests/test_funding.py::test_bookmark_profile_funding PASSED              [ 51%]
-tests/test_health.py::test_health PASSED                                 [ 54%]
-tests/test_innovation_scoring_and_patents.py::test_patent_search_endpoint PASSED [ 57%]
-tests/test_innovation_scoring_and_patents.py::test_patent_clusters_endpoint PASSED [ 60%]
-tests/test_innovation_scoring_and_patents.py::test_patent_trends_endpoint PASSED [ 63%]
-tests/test_innovation_scoring_and_patents.py::test_technology_emerging_endpoint PASSED [ 66%]
-tests/test_innovation_scoring_and_patents.py::test_technology_maturity_endpoint PASSED [ 69%]
-tests/test_innovation_scoring_and_patents.py::test_technology_competitors_endpoint PASSED [ 72%]
-tests/test_innovation_scoring_and_patents.py::test_scoring_calculate_endpoint PASSED [ 75%]
-tests/test_innovation_scoring_and_patents.py::test_scoring_get_by_project_id PASSED [ 78%]
-tests/test_innovation_scoring_and_patents.py::test_commercialization_recommendations PASSED [ 81%]
-tests/test_profile.py::test_profile_crud_and_components PASSED           [ 84%]
+============================= test session starts =============================
+collected 31 items
+
+tests/test_assets.py::test_publication_search_mock PASSED                [  3%]
+tests/test_assets.py::test_publication_save_duplicate PASSED             [  6%]
+tests/test_assets.py::test_patent_search_and_save PASSED                 [  9%]
+tests/test_assets.py::test_publication_empty_search PASSED               [ 12%]
+tests/test_assets.py::test_publication_provider_failure PASSED           [ 16%]
+tests/test_assets.py::test_patent_provider_failure PASSED                [ 19%]
+tests/test_auth.py::test_registration_and_duplicate PASSED               [ 22%]
+tests/test_auth.py::test_login_and_me PASSED                             [ 25%]
+tests/test_auth.py::test_bad_password_and_tokens PASSED                  [ 29%]
+tests/test_auth.py::test_admin_rbac PASSED                               [ 32%]
+tests/test_auth.py::test_researcher_cannot_admin PASSED                  [ 35%]
+tests/test_funding.py::test_funding_list_and_search PASSED               [ 38%]
+tests/test_funding.py::test_personalized_recommendations_and_alerts PASSED [ 41%]
+tests/test_funding.py::test_admin_create_funding_opportunity PASSED      [ 45%]
+tests/test_funding.py::test_bookmark_profile_funding PASSED              [ 48%]
+tests/test_health.py::test_health PASSED                                 [ 51%]
+tests/test_innovation_scoring_and_patents.py::test_patent_search_endpoint PASSED [ 54%]
+tests/test_innovation_scoring_and_patents.py::test_patent_clusters_endpoint PASSED [ 58%]
+tests/test_innovation_scoring_and_patents.py::test_patent_trends_endpoint PASSED [ 61%]
+tests/test_innovation_scoring_and_patents.py::test_technology_emerging_endpoint PASSED [ 64%]
+tests/test_innovation_scoring_and_patents.py::test_technology_maturity_endpoint PASSED [ 67%]
+tests/test_innovation_scoring_and_patents.py::test_technology_competitors_endpoint PASSED [ 70%]
+tests/test_innovation_scoring_and_patents.py::test_scoring_calculate_endpoint PASSED [ 74%]
+tests/test_innovation_scoring_and_patents.py::test_scoring_get_by_project_id PASSED [ 77%]
+tests/test_innovation_scoring_and_patents.py::test_commercialization_recommendations PASSED [ 80%]
+tests/test_profile.py::test_profile_crud_and_components PASSED           [ 83%]
 tests/test_profile.py::test_invalid_history PASSED                       [ 87%]
 tests/test_profile.py::test_cross_user_isolation PASSED                  [ 90%]
 tests/test_trends.py::test_get_trends_topics PASSED                      [ 93%]
 tests/test_trends.py::test_get_trends_hotspots PASSED                    [ 96%]
 tests/test_trends.py::test_get_trends_citations PASSED                   [100%]
 
-================= 33 passed, 0 failed in 79.91s =================
-```
-
-### Standalone Runners:
-```bash
-# Verify patent and technology routes
-python test_member6_backend.py
-
-# Verify publication discovery and academic sources
-python test_pub_search.py
+====================== 31 passed, 0 failed in 45.32s ======================
 ```
 
 ---
 
-## ⚙️ Configuration & Environment Variables
+## 🔒 Security & RBAC Specifications
 
-Create a `.env` file in the `backend/` directory to customize platform settings:
-
-```env
-# Application Settings
-PROJECT_NAME="Research Funding & Innovation Intelligence Platform"
-VERSION="1.0.0"
-ENVIRONMENT="development"
-
-# Security & Authentication
-SECRET_KEY="your-secure-jwt-secret-key"
-ACCESS_TOKEN_EXPIRE_MINUTES=1440
-
-# Database Configuration (PostgreSQL / SQLite)
-DATABASE_URL="sqlite:///./research_platform.db"
-# DATABASE_URL="postgresql://user:password@localhost:5432/research_db"
-
-# Document Database Configuration (MongoDB)
-MONGO_URL="mongodb://localhost:27017"
-MONGO_DB_NAME="research_innovation_db"
-```
+1. **Password Security**: Implemented with **Argon2id**, the modern winner of the Password Hashing Competition (PHC), resisting side-channel and GPU-accelerated brute force attacks.
+2. **Access Tokens**: Cryptographically signed **JSON Web Tokens (JWT)** using the HMAC-SHA256 algorithm with strict expiration policies.
+3. **Route Protection**: Declarative dependency injection via FastAPI guards (`require_roles([Role.ADMINISTRATOR])`) ensuring complete resource isolation between personas.
+4. **Data Protection**: Zero API secrets bundled into client builds; environment-driven runtime secrets with `.env` exclusions.
 
 ---
 
 ## 📄 License & Attribution
 
-Distributed under the **MIT License**. See `LICENSE` for more information. Developed for the Research Funding & Innovation Intelligence Platform project.
+Distributed under the **MIT License**. See `LICENSE` for details.
+
+Developed for the **Research Funding & Innovation Intelligence Platform** project.

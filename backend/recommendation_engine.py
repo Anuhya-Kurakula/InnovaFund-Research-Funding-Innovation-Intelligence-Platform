@@ -85,9 +85,40 @@ def build_opportunity_text(opportunity) -> str:
     return " ".join(parts)
 
 def get_opportunity_amount(opportunity):
-    if getattr(opportunity, "amount", None):
-        return opportunity.amount
-    return getattr(opportunity, "grant_amount", None)
+    raw = getattr(opportunity, "grant_amount", None) or getattr(opportunity, "amount", None)
+    if raw is None:
+        return 500000.0
+    if isinstance(raw, (int, float)):
+        return float(raw)
+    try:
+        # Extract digits from string e.g. "$750,000" or "€1,200,000"
+        cleaned = "".join(c for c in str(raw) if c.isdigit() or c == '.')
+        return float(cleaned) if cleaned else 500000.0
+    except Exception:
+        return 500000.0
+
+def deadline_score(deadline, now=None) -> float:
+    if not deadline:
+        return 0.5
+    if isinstance(deadline, str):
+        try:
+            deadline = datetime.strptime(deadline[:10], "%Y-%m-%d").date()
+        except Exception:
+            return 0.5
+    now_date = now.date() if isinstance(now, datetime) else (now or date.today())
+    deadline_date = deadline.date() if isinstance(deadline, datetime) else deadline
+    if not isinstance(deadline_date, date):
+        return 0.5
+    days_left = (deadline_date - now_date).days
+    if days_left < 0:
+        return 0.0
+    if days_left < 7:
+        return 0.1
+    if 7 <= days_left <= 90:
+        return 1.0
+    if 90 < days_left <= 180:
+        return 0.7
+    return 0.4
 
 def compute_score(profile_text: str, opportunity, min_amount: float, max_amount: float) -> dict:
     opportunity_text = build_opportunity_text(opportunity)
@@ -97,6 +128,20 @@ def compute_score(profile_text: str, opportunity, min_amount: float, max_amount:
     dl_score = deadline_score(getattr(opportunity, "deadline", None))
     amt_score = amount_score(opportunity_amount, min_amount, max_amount)
     sr_score = round(getattr(opportunity, "past_success_rate", 0.0) or 0.0, 4)
+
+    total_score = (
+        d_score * WEIGHTS["domain_fit"] +
+        dl_score * WEIGHTS["deadline"] +
+        amt_score * WEIGHTS["amount"] +
+        sr_score * WEIGHTS["success_rate"]
+    )
+    # Scale to 0-100 normalized score with base floor
+    norm_score = round(min(99.0, max(42.0, total_score * 100 + 30)), 1)
+
+    return {
+        "score": norm_score,
+        "reasoning": build_reasoning(d_score, dl_score, amt_score, sr_score)
+    }
 
     final = (
         d_score * WEIGHTS["domain_fit"]

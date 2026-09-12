@@ -37,31 +37,66 @@ def generate_recommendations(payload: GenerateRequest, db: Session = Depends(get
         opportunities = db.query(FundingOpportunity).all()
 
     profile = db.query(ResearchProfile).filter(ResearchProfile.user_id == payload.researcher_id).first()
-    profile_text = ""
+    parts = []
     if profile:
-        parts = []
-        if profile.technology_areas:
-            parts.append(profile.technology_areas)
-        if profile.research_summary:
-            parts.append(profile.research_summary)
-        profile_text = " ".join(parts)
+        if getattr(profile, "bio", None):
+            parts.append(str(profile.bio))
+        if getattr(profile, "domains", None):
+            for d in profile.domains:
+                parts.append(getattr(d, "name", str(d)))
+        if getattr(profile, "interests", None):
+            for i in profile.interests:
+                parts.append(getattr(i, "name", str(i)))
+        if getattr(profile, "keywords", None):
+            for k in profile.keywords:
+                parts.append(getattr(k, "value", str(k)))
+        if getattr(profile, "technology_areas", None):
+            for t in profile.technology_areas:
+                parts.append(getattr(t, "name", str(t)))
+
+    profile_text = " ".join([p for p in parts if isinstance(p, str) and p.strip()])
     if not profile_text:
         profile_text = "artificial intelligence machine learning quantum computing biotechnology clean energy"
 
-    amounts = [opp.grant_amount for opp in opportunities if opp.grant_amount]
-    min_amt = min(amounts) if amounts else 100000
-    max_amt = max(amounts) if amounts else 2500000
+    amounts = []
+    for opp in opportunities:
+        amt = getattr(opp, "grant_amount", None) or getattr(opp, "amount", None)
+        if amt:
+            try:
+                cleaned = "".join(c for c in str(amt) if c.isdigit() or c == '.')
+                if cleaned:
+                    amounts.append(float(cleaned))
+            except Exception:
+                pass
+
+    min_amt = min(amounts) if amounts else 100000.0
+    max_amt = max(amounts) if amounts else 2500000.0
 
     results = []
     for opp in opportunities:
         res = compute_score(profile_text, opp, min_amt, max_amt)
-        link = getattr(opp, "external_link", None) or "https://seedfund.nsf.gov/"
+        link = getattr(opp, "application_url", None) or getattr(opp, "external_link", None) or "https://seedfund.nsf.gov/"
+        
+        # Safe amount formatting
+        raw_amt = getattr(opp, "grant_amount", None) or getattr(opp, "amount", None)
+        amt_val = 500000.0
+        if isinstance(raw_amt, (int, float)):
+            amt_val = float(raw_amt)
+        elif raw_amt:
+            try:
+                c = "".join(ch for ch in str(raw_amt) if ch.isdigit() or ch == '.')
+                if c: amt_val = float(c)
+            except Exception:
+                amt_val = 500000.0
+
+        deadline_str = str(opp.deadline) if opp.deadline else "2026-12-31"
+
         results.append(RecommendationItem(
             opportunity_id=opp.id,
             title=opp.title,
             agency=opp.agency or "Global Agency",
-            amount=float(opp.grant_amount) if opp.grant_amount else 500000.0,
-            deadline=opp.deadline.strftime("%Y-%m-%d") if opp.deadline else "2026-12-31",
+            amount=amt_val,
+            deadline=deadline_str,
             score=res["score"],
             eligible=res["score"] >= 45.0,
             reasoning=res["reasoning"],
@@ -71,3 +106,4 @@ def generate_recommendations(payload: GenerateRequest, db: Session = Depends(get
 
     results.sort(key=lambda x: x.score, reverse=True)
     return results[:payload.top_n]
+

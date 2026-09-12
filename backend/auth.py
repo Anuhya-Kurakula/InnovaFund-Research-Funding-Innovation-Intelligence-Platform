@@ -1,47 +1,41 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional
-try:
-    from jose import jwt, JWTError
-except ImportError:
-    import jwt
-    JWTError = jwt.PyJWTError
+import jwt
+from argon2 import PasswordHasher
+from argon2.exceptions import VerifyMismatchError
 
-from passlib.context import CryptContext
 try:
     from config import settings
 except ImportError:
     from app.core.config import settings
 
-
-# Patch passlib bcrypt __about__ version warning for newer bcrypt versions
-import bcrypt
-if not hasattr(bcrypt, '__about__'):
-    bcrypt.__about__ = type('about', (), {'__version__': getattr(bcrypt, '__version__', '4.0.0')})
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+ph = PasswordHasher()
 
 def hash_password(password: str) -> str:
-    # Truncate password to 72 bytes for bcrypt compatibility
-    safe_pass = password.encode('utf-8')[:72].decode('utf-8', errors='ignore')
-    return pwd_context.hash(safe_pass)
+    return ph.hash(password)
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    safe_pass = plain_password.encode('utf-8')[:72].decode('utf-8', errors='ignore')
-    return pwd_context.verify(safe_pass, hashed_password)
-
+    try:
+        return ph.verify(hashed_password, plain_password)
+    except (VerifyMismatchError, ValueError, Exception):
+        return False
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
     to_encode = data.copy()
     if expires_delta:
-        expire = datetime.utcnow() + expires_delta
+        expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+        expire = datetime.now(timezone.utc) + timedelta(minutes=getattr(settings, 'ACCESS_TOKEN_EXPIRE_MINUTES', getattr(settings, 'access_token_expire_minutes', 1440)))
     to_encode.update({"exp": expire})
-    return jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
+    secret = getattr(settings, 'SECRET_KEY', getattr(settings, 'jwt_secret', 'dev-secret-key-innovafund-2026'))
+    algo = getattr(settings, 'ALGORITHM', getattr(settings, 'jwt_algorithm', 'HS256'))
+    return jwt.encode(to_encode, secret, algorithm=algo)
 
 def decode_access_token(token: str) -> Optional[dict]:
     try:
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+        secret = getattr(settings, 'SECRET_KEY', getattr(settings, 'jwt_secret', 'dev-secret-key-innovafund-2026'))
+        algo = getattr(settings, 'ALGORITHM', getattr(settings, 'jwt_algorithm', 'HS256'))
+        payload = jwt.decode(token, secret, algorithms=[algo])
         return payload
-    except JWTError:
+    except Exception:
         return None

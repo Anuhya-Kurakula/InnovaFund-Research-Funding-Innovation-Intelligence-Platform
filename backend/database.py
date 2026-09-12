@@ -14,6 +14,7 @@ def auto_migrate_schema(target_engine):
     """Auto-healing schema migration for developer SQLite & PostgreSQL environments"""
     try:
         with target_engine.connect() as conn:
+            # Check source_id on funding_opportunities
             try:
                 conn.execute(text("SELECT source_id FROM funding_opportunities LIMIT 1"))
             except Exception:
@@ -23,7 +24,19 @@ def auto_migrate_schema(target_engine):
                         conn.commit()
                     logger.info("Auto-healing schema migration: Successfully added 'source_id' column to funding_opportunities.")
                 except Exception as ex:
-                    logger.debug(f"Migration note: {ex}")
+                    logger.debug(f"Migration note source_id: {ex}")
+
+            # Check source_type on funding_sources
+            try:
+                conn.execute(text("SELECT source_type FROM funding_sources LIMIT 1"))
+            except Exception:
+                try:
+                    conn.execute(text("ALTER TABLE funding_sources ADD COLUMN source_type VARCHAR(100) DEFAULT 'Grant'"))
+                    if hasattr(conn, 'commit'):
+                        conn.commit()
+                    logger.info("Auto-healing schema migration: Successfully added 'source_type' column to funding_sources.")
+                except Exception as ex:
+                    logger.debug(f"Migration note source_type: {ex}")
     except Exception:
         pass
 

@@ -29,7 +29,7 @@ services:
       DATABASE_URL: postgresql+psycopg://rfip:rfip@postgres:5432/rfip
       MONGODB_URL: mongodb://mongodb:27017
       MONGODB_DATABASE: rfip
-      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in your shell}
+      JWT_SECRET: dev-secret-key-innovafund-2026
       CORS_ORIGINS: http://localhost:5173
       PATENTS_PROVIDER: local
     ports: ["8000:8000"]
@@ -40,7 +40,7 @@ services:
     build: ./frontend
     environment:
       VITE_API_URL: http://localhost:8000/api/v1
-    ports: ["5173:80"]
+    ports: ["5173:5173"]
     depends_on: [backend]
 volumes:
   postgres_data:
