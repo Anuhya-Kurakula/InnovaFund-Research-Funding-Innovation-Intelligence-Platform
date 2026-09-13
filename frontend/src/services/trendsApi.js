@@ -44,6 +44,20 @@ export async function fetchHotspotsAndDomains() {
   }
 }
 
+export async function fetchEmerging() {
+  try {
+    const data = await api("/trends/emerging");
+    return {
+      count: data.count || 0,
+      threshold: data.threshold ?? 0.15,
+      topics: data.emerging_topics || [],
+    };
+  } catch (error) {
+    console.warn("Emerging topics unavailable:", error);
+    return { count: 0, threshold: 0.15, topics: [] };
+  }
+}
+
 export async function fetchCitations() {
   try {
     return await api("/trends/citations");

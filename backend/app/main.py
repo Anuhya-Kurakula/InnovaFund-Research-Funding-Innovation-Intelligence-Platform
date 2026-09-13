@@ -28,7 +28,10 @@ from routers import (
     patent_landscape_routes,
     scoring_routes,
     commercialization_routes,
-    recommendation_routes
+    recommendation_routes,
+    portfolio_routes,
+    trends_routes,
+    patent_routes
 )
 
 settings = get_settings()
@@ -112,6 +115,13 @@ app.include_router(commercialization_routes.router, prefix="/api")
 app.include_router(commercialization_routes.router, prefix="/api/v1")
 app.include_router(recommendation_routes.router, prefix="/api")
 app.include_router(recommendation_routes.router, prefix="/api/v1")
+app.include_router(portfolio_routes.router, prefix="/api")
+app.include_router(portfolio_routes.router, prefix="/api/v1")
+app.include_router(portfolio_routes.router, prefix="/api/scoring")
+app.include_router(trends_routes.router, prefix="/api")
+app.include_router(trends_routes.router, prefix="/api/v1")
+app.include_router(patent_routes.router, prefix="/api")
+app.include_router(patent_routes.router, prefix="/api/v1")
 
 # Root-level endpoints (/patents/search, /scoring/calculate, /commercialization/recommendations, etc.)
 app.include_router(patent_landscape_routes.router)
@@ -119,6 +129,9 @@ app.include_router(technology_routes.router)
 app.include_router(scoring_routes.router)
 app.include_router(commercialization_routes.router)
 app.include_router(recommendation_routes.router)
+app.include_router(portfolio_routes.router)
+app.include_router(trends_routes.router)
+app.include_router(patent_routes.router)
 
 @app.get("/", include_in_schema=False)
 def root():

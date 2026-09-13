@@ -1,0 +1,402 @@
+[
+  {
+    "project_id": "PRJ-001",
+    "title": "Quantum-Resistant Lattice Cryptography for Edge IoT",
+    "domain": "AI/ML",
+    "research_novelty": 92.5,
+    "patent_strength": 84.0,
+    "technology_maturity": 68.0,
+    "market_potential": 88.5,
+    "funding_relevance": 90.0,
+    "raw_metrics": {
+      "citation_count": 145,
+      "claim_count": 28,
+      "patent_family_size": 12,
+      "years_since_filing": 3
+    }
+  },
+  {
+    "project_id": "PRJ-002",
+    "title": "CRISPR-Guided Epigenetic Reprogramming for Crop Drought Resistance",
+    "domain": "Agritech",
+    "research_novelty": 89.0,
+    "patent_strength": 78.5,
+    "technology_maturity": 62.0,
+    "market_potential": 85.0,
+    "funding_relevance": 82.0,
+    "raw_metrics": {
+      "citation_count": 98,
+      "claim_count": 22,
+      "patent_family_size": 8,
+      "years_since_filing": 2
+    }
+  },
+  {
+    "project_id": "PRJ-003",
+    "title": "Solid-State Sodium-Ion Battery with Dendrite-Inhibiting Electrolyte",
+    "domain": "Clean Energy",
+    "research_novelty": 85.0,
+    "patent_strength": 91.0,
+    "technology_maturity": 74.0,
+    "market_potential": 94.0,
+    "funding_relevance": 88.0,
+    "raw_metrics": {
+      "citation_count": 210,
+      "claim_count": 35,
+      "patent_family_size": 15,
+      "years_since_filing": 4
+    }
+  },
+  {
+    "project_id": "PRJ-004",
+    "title": "2nm Gallium Nitride Gate-All-Around Transistor Architecture",
+    "domain": "Semiconductors",
+    "research_novelty": 94.0,
+    "patent_strength": 96.0,
+    "technology_maturity": 55.0,
+    "market_potential": 98.0,
+    "funding_relevance": 92.0,
+    "raw_metrics": {
+      "citation_count": 320,
+      "claim_count": 42,
+      "patent_family_size": 18,
+      "years_since_filing": 2
+    }
+  },
+  {
+    "project_id": "PRJ-005",
+    "title": "Targeted mRNA Nanoparticle Delivery for Neurodegenerative Disorders",
+    "domain": "Biotech",
+    "research_novelty": 91.0,
+    "patent_strength": 82.0,
+    "technology_maturity": 48.0,
+    "market_potential": 92.0,
+    "funding_relevance": 95.0,
+    "raw_metrics": {
+      "citation_count": 175,
+      "claim_count": 26,
+      "patent_family_size": 10,
+      "years_since_filing": 1
+    }
+  },
+  {
+    "project_id": "PRJ-006",
+    "title": "Neuromorphic Event-Based Vision Sensor for Autonomous Drones",
+    "domain": "AI/ML",
+    "research_novelty": 83.0,
+    "patent_strength": 75.0,
+    "technology_maturity": 72.0,
+    "market_potential": 81.0,
+    "funding_relevance": 79.0,
+    "raw_metrics": {
+      "citation_count": 84,
+      "claim_count": 19,
+      "patent_family_size": 6,
+      "years_since_filing": 4
+    }
+  },
+  {
+    "project_id": "PRJ-007",
+    "title": "Autonomous Soil Microbiome Regeneration via Biochar-Encapsulated Inoculants",
+    "domain": "Agritech",
+    "research_novelty": 81.0,
+    "patent_strength": 66.5,
+    "technology_maturity": 58.0,
+    "market_potential": 74.0,
+    "funding_relevance": 75.0,
+    "raw_metrics": {
+      "citation_count": 62,
+      "claim_count": 16,
+      "patent_family_size": 5,
+      "years_since_filing": 3
+    }
+  },
+  {
+    "project_id": "PRJ-008",
+    "title": "Perovskite-Silicon Tandem Solar Cell with 33% Certified Efficiency",
+    "domain": "Clean Energy",
+    "research_novelty": 87.5,
+    "patent_strength": 89.0,
+    "technology_maturity": 79.0,
+    "market_potential": 93.0,
+    "funding_relevance": 85.0,
+    "raw_metrics": {
+      "citation_count": 260,
+      "claim_count": 31,
+      "patent_family_size": 14,
+      "years_since_filing": 5
+    }
+  },
+  {
+    "project_id": "PRJ-009",
+    "title": "Photonic Interconnect Fabric for Multi-Die Chiplet Scaling",
+    "domain": "Semiconductors",
+    "research_novelty": 90.0,
+    "patent_strength": 88.0,
+    "technology_maturity": 64.0,
+    "market_potential": 91.0,
+    "funding_relevance": 89.0,
+    "raw_metrics": {
+      "citation_count": 130,
+      "claim_count": 25,
+      "patent_family_size": 11,
+      "years_since_filing": 3
+    }
+  },
+  {
+    "project_id": "PRJ-010",
+    "title": "Allogeneic CAR-NK Cell Platform for Off-the-Shelf Solid Tumor Therapy",
+    "domain": "Biotech",
+    "research_novelty": 95.0,
+    "patent_strength": 92.0,
+    "technology_maturity": 42.0,
+    "market_potential": 96.0,
+    "funding_relevance": 97.0,
+    "raw_metrics": {
+      "citation_count": 310,
+      "claim_count": 38,
+      "patent_family_size": 16,
+      "years_since_filing": 2
+    }
+  },
+  {
+    "project_id": "PRJ-011",
+    "title": "Causal Reinforcement Learning for Real-Time Power Grid Optimization",
+    "domain": "AI/ML",
+    "research_novelty": 84.0,
+    "patent_strength": 70.0,
+    "technology_maturity": 76.0,
+    "market_potential": 83.0,
+    "funding_relevance": 80.0,
+    "raw_metrics": {
+      "citation_count": 78,
+      "claim_count": 18,
+      "patent_family_size": 6,
+      "years_since_filing": 4
+    }
+  },
+  {
+    "project_id": "PRJ-012",
+    "title": "Hyperspectral Satellite AI for Hyper-Localized Nitrogen Leakage Sensing",
+    "domain": "Agritech",
+    "research_novelty": 78.0,
+    "patent_strength": 65.0,
+    "technology_maturity": 81.0,
+    "market_potential": 76.0,
+    "funding_relevance": 74.0,
+    "raw_metrics": {
+      "citation_count": 52,
+      "claim_count": 14,
+      "patent_family_size": 4,
+      "years_since_filing": 5
+    }
+  },
+  {
+    "project_id": "PRJ-013",
+    "title": "Green Hydrogen Direct Seawater Electrolyzer with Anti-Chlorine Catalyst",
+    "domain": "Clean Energy",
+    "research_novelty": 93.0,
+    "patent_strength": 86.0,
+    "technology_maturity": 52.0,
+    "market_potential": 95.0,
+    "funding_relevance": 91.0,
+    "raw_metrics": {
+      "citation_count": 185,
+      "claim_count": 27,
+      "patent_family_size": 9,
+      "years_since_filing": 2
+    }
+  },
+  {
+    "project_id": "PRJ-014",
+    "title": "Superconducting Qubit Quantum Processing Unit with High Coherence Time",
+    "domain": "Semiconductors",
+    "research_novelty": 96.0,
+    "patent_strength": 94.0,
+    "technology_maturity": 38.0,
+    "market_potential": 90.0,
+    "funding_relevance": 98.0,
+    "raw_metrics": {
+      "citation_count": 420,
+      "claim_count": 45,
+      "patent_family_size": 20,
+      "years_since_filing": 3
+    }
+  },
+  {
+    "project_id": "PRJ-015",
+    "title": "Synthetic Biology Bio-Foundry for Scalable Therapeutic Peptide Synthesis",
+    "domain": "Biotech",
+    "research_novelty": 86.0,
+    "patent_strength": 80.0,
+    "technology_maturity": 66.0,
+    "market_potential": 87.0,
+    "funding_relevance": 84.0,
+    "raw_metrics": {
+      "citation_count": 115,
+      "claim_count": 21,
+      "patent_family_size": 7,
+      "years_since_filing": 3
+    }
+  },
+  {
+    "project_id": "PRJ-016",
+    "title": "Privacy-Preserving Federated Foundation Models for Clinical Diagnostics",
+    "domain": "AI/ML",
+    "research_novelty": 88.0,
+    "patent_strength": 77.0,
+    "technology_maturity": 69.0,
+    "market_potential": 89.0,
+    "funding_relevance": 92.0,
+    "raw_metrics": {
+      "citation_count": 140,
+      "claim_count": 23,
+      "patent_family_size": 8,
+      "years_since_filing": 2
+    }
+  },
+  {
+    "project_id": "PRJ-017",
+    "title": "Robotic Micro-Pruning and Selective Harvesting for Vertical Farms",
+    "domain": "Agritech",
+    "research_novelty": 74.0,
+    "patent_strength": 68.0,
+    "technology_maturity": 84.0,
+    "market_potential": 78.0,
+    "funding_relevance": 71.0,
+    "raw_metrics": {
+      "citation_count": 45,
+      "claim_count": 15,
+      "patent_family_size": 5,
+      "years_since_filing": 4
+    }
+  },
+  {
+    "project_id": "PRJ-018",
+    "title": "Direct Air Capture Contactor with Low-Temperature Moisture Swing Sorbents",
+    "domain": "Clean Energy",
+    "research_novelty": 90.0,
+    "patent_strength": 85.0,
+    "technology_maturity": 59.0,
+    "market_potential": 92.0,
+    "funding_relevance": 89.0,
+    "raw_metrics": {
+      "citation_count": 160,
+      "claim_count": 24,
+      "patent_family_size": 10,
+      "years_since_filing": 3
+    }
+  },
+  {
+    "project_id": "PRJ-019",
+    "title": "Monolithic 3D DRAM Architecture with Ultra-Low Leakage Dielectrics",
+    "domain": "Semiconductors",
+    "research_novelty": 89.0,
+    "patent_strength": 91.0,
+    "technology_maturity": 61.0,
+    "market_potential": 94.0,
+    "funding_relevance": 87.0,
+    "raw_metrics": {
+      "citation_count": 190,
+      "claim_count": 30,
+      "patent_family_size": 13,
+      "years_since_filing": 2
+    }
+  },
+  {
+    "project_id": "PRJ-020",
+    "title": "Continuous Glucose Monitoring Micro-Needle Array with Enzymatic Bio-Fuel",
+    "domain": "Biotech",
+    "research_novelty": 82.0,
+    "patent_strength": 79.0,
+    "technology_maturity": 75.0,
+    "market_potential": 88.0,
+    "funding_relevance": 81.0,
+    "raw_metrics": {
+      "citation_count": 105,
+      "claim_count": 20,
+      "patent_family_size": 7,
+      "years_since_filing": 5
+    }
+  },
+  {
+    "project_id": "PRJ-021",
+    "title": "Self-Supervised Multimodal LLM for Automated Scientific Hypothesis Synthesis",
+    "domain": "AI/ML",
+    "research_novelty": 95.0,
+    "patent_strength": 81.0,
+    "technology_maturity": 53.0,
+    "market_potential": 91.0,
+    "funding_relevance": 94.0,
+    "raw_metrics": {
+      "citation_count": 230,
+      "claim_count": 25,
+      "patent_family_size": 9,
+      "years_since_filing": 1
+    }
+  },
+  {
+    "project_id": "PRJ-022",
+    "title": "Precision Nano-Pesticide Carrier Triggered by Insect Digestive Enzymes",
+    "domain": "Agritech",
+    "research_novelty": 83.0,
+    "patent_strength": 73.0,
+    "technology_maturity": 64.0,
+    "market_potential": 80.0,
+    "funding_relevance": 77.0,
+    "raw_metrics": {
+      "citation_count": 72,
+      "claim_count": 17,
+      "patent_family_size": 6,
+      "years_since_filing": 3
+    }
+  },
+  {
+    "project_id": "PRJ-023",
+    "title": "Thermal Energy Storage using High-Entropy Molten Salts up to 800°C",
+    "domain": "Clean Energy",
+    "research_novelty": 86.0,
+    "patent_strength": 82.0,
+    "technology_maturity": 70.0,
+    "market_potential": 85.0,
+    "funding_relevance": 83.0,
+    "raw_metrics": {
+      "citation_count": 110,
+      "claim_count": 19,
+      "patent_family_size": 8,
+      "years_since_filing": 4
+    }
+  },
+  {
+    "project_id": "PRJ-024",
+    "title": "Atomic Layer Etching for Sub-1nm Selective Material Removal",
+    "domain": "Semiconductors",
+    "research_novelty": 91.0,
+    "patent_strength": 93.0,
+    "technology_maturity": 58.0,
+    "market_potential": 93.0,
+    "funding_relevance": 90.0,
+    "raw_metrics": {
+      "citation_count": 280,
+      "claim_count": 34,
+      "patent_family_size": 15,
+      "years_since_filing": 3
+    }
+  },
+  {
+    "project_id": "PRJ-025",
+    "title": "Engineered Bacteriophage Cocktails for Multi-Drug Resistant Biofilms",
+    "domain": "Biotech",
+    "research_novelty": 93.0,
+    "patent_strength": 87.0,
+    "technology_maturity": 50.0,
+    "market_potential": 94.0,
+    "funding_relevance": 96.0,
+    "raw_metrics": {
+      "citation_count": 240,
+      "claim_count": 29,
+      "patent_family_size": 11,
+      "years_since_filing": 2
+    }
+  }
+]

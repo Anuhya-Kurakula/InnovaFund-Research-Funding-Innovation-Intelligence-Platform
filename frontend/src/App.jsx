@@ -13,6 +13,10 @@ import Funding from './pages/Funding';
 import RecommendationsPage from './pages/RecommendationsPage';
 import PublicationsPage from './pages/PublicationsPage';
 import PatentsPage from './pages/PatentsPage';
+import Trends from './pages/Trends';
+import AnalyticsPage from './pages/AnalyticsPage';
+import InnovationManagerPage from './pages/InnovationManagerPage';
+import ScoringPage from './pages/ScoringPage';
 import ArchitecturePage from './pages/ArchitecturePage';
 import AdminPage from './pages/AdminPage';
 import SettingsPage from './pages/SettingsPage';
@@ -48,6 +52,10 @@ export default function App() {
           <Route path="/recommendations" element={<RecommendationsPage />} />
           <Route path="/publications" element={<PublicationsPage />} />
           <Route path="/patents" element={<PatentsPage />} />
+          <Route path="/trends" element={<Trends />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/innovation-manager" element={<InnovationManagerPage />} />
+          <Route path="/scoring" element={<ScoringPage />} />
           <Route path="/architecture" element={<ArchitecturePage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/settings" element={<SettingsPage />} />
@@ -59,3 +67,4 @@ export default function App() {
     </Routes>
   );
 }
+

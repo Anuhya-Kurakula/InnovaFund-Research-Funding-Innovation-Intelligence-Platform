@@ -394,3 +394,38 @@ class CompetitorActivity(Base):
     created_at = Column(TIMESTAMP, server_default=func.now())
 
     domain = relationship("TechnologyDomain", back_populates="competitors")
+
+
+class Recommendation(Base):
+    __tablename__ = "recommendations"
+    __table_args__ = {'extend_existing': True}
+
+    id = Column(Integer, primary_key=True, index=True)
+    researcher_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    opportunity_id = Column(Integer, ForeignKey("funding_opportunities.id", ondelete="CASCADE"), nullable=False)
+    score = Column(Float, nullable=False)
+    domain_fit_score = Column(Float, nullable=True)
+    deadline_score = Column(Float, nullable=True)
+    amount_score = Column(Float, nullable=True)
+    success_rate_score = Column(Float, nullable=True)
+    eligible = Column(Integer, default=1)
+    reasoning = Column(Text, nullable=True)
+    generated_at = Column(TIMESTAMP, server_default=func.now())
+
+    researcher = relationship("User")
+    opportunity = relationship("FundingOpportunity")
+
+
+class PatentRecord(Base):
+    __tablename__ = "patent_records"
+    __table_args__ = {'extend_existing': True}
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, nullable=False)
+    assignee = Column(String, nullable=True)
+    filing_date = Column(Date, nullable=True)
+    classification = Column(String, nullable=True)
+    technology_domain = Column(String, nullable=True)
+    citation_count = Column(Integer, default=0)
+    abstract = Column(String, nullable=True)
+

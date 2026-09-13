@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../styles/trends.css";
 import {
   PERIODS,
   fetchTopics,

@@ -1,0 +1,403 @@
+/* =========================================================
+   Research Trends page (Member 4 — Publication Trend Analysis)
+   Scoped under .trends-page so it cannot affect other pages.
+========================================================= */
+
+.trends-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 2.25rem 3rem;
+  color: var(--text-main);
+  font-family: var(--font-body);
+}
+
+.trends-page .eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary-sky);
+  margin-bottom: 0.4rem;
+}
+
+.trends-page h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.trends-page h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.trends-page p {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.trends-page .muted {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ---------- page header ---------- */
+
+.trends-page .page-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.trends-page .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.05rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-card);
+  background: var(--bg-card);
+  color: var(--text-sub);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.trends-page .button:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-card-active);
+  color: var(--text-main);
+}
+
+/* ---------- cards ---------- */
+
+.trends-page .card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.trends-page .card.compact {
+  padding: 1.4rem 1.5rem;
+}
+
+/* ---------- summary stats ---------- */
+
+.trends-page .trend-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.trends-page .trend-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.25rem 1.35rem;
+}
+
+.trends-page .trend-stat strong {
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-main);
+}
+
+.trends-page .trend-stat small {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.trends-page .trend-stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 0.55rem;
+  border-radius: 11px;
+  color: #fff;
+}
+
+.trends-page .trend-stat-icon.blue { background: var(--primary-cobalt); }
+.trends-page .trend-stat-icon.purple { background: var(--primary-violet); }
+.trends-page .trend-stat-icon.orange { background: var(--accent-amber); }
+
+/* ---------- section headings ---------- */
+
+.trends-page .section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 1.15rem;
+}
+
+.trends-page .section-heading select {
+  padding: 0.45rem 0.75rem;
+  border-radius: 9px;
+  border: 1px solid var(--border-card);
+  background: rgba(2, 6, 23, 0.85);
+  color: var(--text-sub);
+  font-size: 0.82rem;
+}
+
+.trends-page .hotspot-count {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-card);
+  background: rgba(2, 6, 23, 0.6);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ---------- domain monitoring ---------- */
+
+.trends-page .domain-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.trends-page .trend-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--border-card);
+}
+
+.trends-page .trend-row:first-child { border-top: none; }
+
+.trends-page .trend-main { min-width: 0; }
+
+.trends-page .trend-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.trends-page .trend-title-row strong {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.trends-page .domain-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--primary-sky);
+  flex: none;
+}
+
+.trends-page .trend-separator {
+  margin: 0 0.45rem;
+  color: var(--text-muted);
+}
+
+/* ---------- sparkline ---------- */
+
+.trends-page .sparkline {
+  flex: none;
+  overflow: visible;
+}
+
+.trends-page .sparkline path,
+.trends-page .sparkline polyline {
+  fill: none;
+  stroke: var(--primary-sky);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.trends-page .sparkline-empty {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+/* ---------- topic trends ---------- */
+
+.trends-page .topic-highlight {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-card);
+  background: rgba(2, 6, 23, 0.55);
+}
+
+.trends-page .topic-highlight strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-main);
+}
+
+.trends-page .topic-highlight span { font-size: 0.78rem; }
+
+.trends-page .topic-velocity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.trends-page .trend-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.55rem;
+  height: 150px;
+}
+
+.trends-page .trend-bar-col {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  height: 100%;
+}
+
+.trends-page .trend-bar {
+  width: 100%;
+  min-height: 4px;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(180deg, var(--primary-sky), var(--primary-cobalt));
+}
+
+.trends-page .trend-bar-value {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ---------- hotspots ---------- */
+
+.trends-page .hotspot-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.trends-page .hotspot-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.05rem 0;
+  border-top: 1px solid var(--border-card);
+}
+
+.trends-page .hotspot-row:first-child { border-top: none; }
+
+.trends-page .hotspot-rank {
+  flex: none;
+  width: 34px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.trends-page .hotspot-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.trends-page .hotspot-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.trends-page .hotspot-title strong {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.trends-page .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.65rem;
+}
+
+.trends-page .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-card);
+  background: rgba(2, 6, 23, 0.6);
+  font-size: 0.72rem;
+  color: var(--text-sub);
+}
+
+.trends-page .chip.hot {
+  border-color: rgba(245, 158, 11, 0.45);
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--accent-amber);
+}
+
+.trends-page .hotspot-score-wrap {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.trends-page .hotspot-score {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--primary-sky);
+}
+
+/* ---------- states ---------- */
+
+.trends-page .state,
+.trends-page .error {
+  padding: 1.4rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-card);
+  background: rgba(2, 6, 23, 0.5);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.trends-page .error {
+  border-color: rgba(244, 63, 94, 0.4);
+  background: rgba(244, 63, 94, 0.1);
+  color: #fda4af;
+}
+
+@media (max-width: 720px) {
+  .trends-page { padding: 1.25rem 1rem 2.5rem; }
+  .trends-page .page-head,
+  .trends-page .section-heading,
+  .trends-page .topic-highlight { flex-direction: column; align-items: flex-start; }
+  .trends-page .hotspot-row { flex-wrap: wrap; }
+}

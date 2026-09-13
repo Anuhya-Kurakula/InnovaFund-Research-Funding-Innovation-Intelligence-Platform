@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field
-from typing import List, Optional
+from typing import List, Optional, Union, Dict, Any
 from datetime import datetime, date
 
 # User & Auth Schemas
@@ -253,13 +253,17 @@ class PatentTrendResponse(BaseModel):
 
 
 class ScoringRequest(BaseModel):
-    project_id: Optional[int] = Field(1, description="Target Project ID")
-    project_title: Optional[str] = Field("DeepTech Autonomous AI Agents", description="Project Title")
-    research_novelty: float = Field(85.0, ge=0.0, le=100.0, description="Research Novelty (30% weight)")
-    patent_strength: float = Field(78.0, ge=0.0, le=100.0, description="Patent Strength (20% weight)")
-    technology_maturity: float = Field(82.5, ge=0.0, le=100.0, description="Technology Maturity (15% weight)")
-    market_potential: float = Field(90.0, ge=0.0, le=100.0, description="Market Potential (20% weight)")
-    funding_relevance: float = Field(88.0, ge=0.0, le=100.0, description="Funding Relevance (15% weight)")
+    project_id: Optional[Union[int, str]] = Field("PRJ-001", description="Target Project ID")
+    project_title: Optional[str] = Field("DeepTech Innovation Project", description="Project Title")
+    research_novelty: Optional[float] = Field(None, ge=0.0, le=100.0, description="Research Novelty (30% weight)")
+    patent_strength: Optional[float] = Field(None, ge=0.0, le=100.0, description="Patent Strength (20% weight)")
+    technology_maturity: Optional[float] = Field(None, ge=0.0, le=100.0, description="Technology Maturity (15% weight)")
+    market_potential: Optional[float] = Field(None, ge=0.0, le=100.0, description="Market Potential (20% weight)")
+    funding_relevance: Optional[float] = Field(None, ge=0.0, le=100.0, description="Funding Relevance (15% weight)")
+    raw_metrics: Optional[Dict[str, Any]] = None
+
+    class Config:
+        extra = "allow"
 
 
 class ScoringBreakdown(BaseModel):
@@ -276,13 +280,23 @@ class ScoringBreakdown(BaseModel):
 
 
 class ScoringResponse(BaseModel):
-    project_id: int
-    project_title: str
+    project_id: Union[int, str]
+    project_title: Optional[str] = None
     overall_score: float # Weighted calculation out of 100.0
-    tier: str # Top Tier Innovation, Strong Commercial Potential, Moderate Readiness, Early R&D Phase
-    breakdown: ScoringBreakdown
-    summary: str
-    calculated_at: datetime
+    innovation_score: Optional[float] = None
+    tier: Optional[str] = None
+    band: Optional[str] = None
+    model_version: Optional[str] = "1.0.0"
+    breakdown: Optional[ScoringBreakdown] = None
+    summary: Optional[str] = None
+    pillars: Optional[Dict[str, Any]] = None
+    derived_scores: Optional[Dict[str, Any]] = None
+    explanation: Optional[Dict[str, Any]] = None
+    calculated_at: Optional[Union[datetime, str]] = None
+    computed_at: Optional[str] = None
+
+    class Config:
+        extra = "allow"
 
 
 class LicensingOpportunity(BaseModel):
