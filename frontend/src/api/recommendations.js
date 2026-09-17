@@ -75,7 +75,10 @@ const FALLBACK_RECOMMENDATIONS = [
   }
 ];
 
-const recClient = axios.create({ baseURL: 'http://localhost:8000' });
+const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+const baseOrigin = rawApiUrl.replace(/\/api\/v1\/?$/, '').replace(/\/v1\/?$/, '').replace(/\/api\/?$/, '');
+
+const recClient = axios.create({ baseURL: baseOrigin });
 recClient.interceptors.request.use((config) => {
   const token = localStorage.getItem('token') || localStorage.getItem('access_token');
   if (token) config.headers.Authorization = `Bearer ${token}`;
