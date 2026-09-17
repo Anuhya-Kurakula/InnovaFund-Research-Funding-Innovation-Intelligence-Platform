@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg?style=for-the-badge&logo=github-actions)]()
-[![Tests Status](https://img.shields.io/badge/tests-31%2F31%20passing%20(100%25)-success.svg?style=for-the-badge&logo=pytest)]()
+[![Tests Status](https://img.shields.io/badge/tests-33%2F33%20passing%20(100%25)-success.svg?style=for-the-badge&logo=pytest)]()
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg?style=for-the-badge&logo=fastapi&logoColor=white)]()
 [![React](https://img.shields.io/badge/React-18+-61DAFB.svg?style=for-the-badge&logo=react&logoColor=black)]()
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791.svg?style=for-the-badge&logo=postgresql&logoColor=white)]()
@@ -131,7 +131,7 @@ graph TB
 | **Milestone 1** | **Authentication, RBAC & Researcher Profiles** | `100% PASS` | Argon2id password hashing, OAuth2 Password-form flow, JWT Bearer tokens, 4 distinct roles, Profile CRUD, OpenAlex literature integration, and Patent provider abstractions. |
 | **Milestone 2** | **Multi-Source Funding & Trend Intelligence** | `100% PASS` | 6 funding stream aggregators, 5-criteria weighted grant matching engine, dynamic match percentage calculation, topic velocity growth bar charts, and citation hotspot analytics. |
 | **Milestone 3** | **Patent Landscape, TRL & Commercialization** | `100% PASS` | Patent clustering, filing velocity curves, Technology Readiness Levels (**TRL 1–9**), 5-pillar Innovation Index (0–100), and Spin-off vs. Licensing commercialization advisor. |
-| **Milestone 4** | **System Integration, AI Co-Pilot & DevOps** | `100% PASS` | Full platform routing integration, InnovaAI Co-Pilot assistant drawer, Admin management portal, Docker Compose containerization, and 31/31 Pytest automated test pass. |
+| **Milestone 4** | **System Integration, AI Co-Pilot & DevOps** | `100% PASS` | Full platform routing integration, InnovaAI Co-Pilot assistant drawer, Admin management portal, Docker Compose containerization, and 33/33 Pytest automated test pass. |
 
 ---
 
@@ -311,41 +311,43 @@ python -m pytest -v
 ### Test Suite Summary:
 ```text
 ============================= test session starts =============================
-collected 31 items
+collected 33 items
 
 tests/test_assets.py::test_publication_search_mock PASSED                [  3%]
 tests/test_assets.py::test_publication_save_duplicate PASSED             [  6%]
 tests/test_assets.py::test_patent_search_and_save PASSED                 [  9%]
 tests/test_assets.py::test_publication_empty_search PASSED               [ 12%]
-tests/test_assets.py::test_publication_provider_failure PASSED           [ 16%]
-tests/test_assets.py::test_patent_provider_failure PASSED                [ 19%]
-tests/test_auth.py::test_registration_and_duplicate PASSED               [ 22%]
-tests/test_auth.py::test_login_and_me PASSED                             [ 25%]
-tests/test_auth.py::test_bad_password_and_tokens PASSED                  [ 29%]
-tests/test_auth.py::test_admin_rbac PASSED                               [ 32%]
-tests/test_auth.py::test_researcher_cannot_admin PASSED                  [ 35%]
-tests/test_funding.py::test_funding_list_and_search PASSED               [ 38%]
-tests/test_funding.py::test_personalized_recommendations_and_alerts PASSED [ 41%]
-tests/test_funding.py::test_admin_create_funding_opportunity PASSED      [ 45%]
-tests/test_funding.py::test_bookmark_profile_funding PASSED              [ 48%]
-tests/test_health.py::test_health PASSED                                 [ 51%]
-tests/test_innovation_scoring_and_patents.py::test_patent_search_endpoint PASSED [ 54%]
-tests/test_innovation_scoring_and_patents.py::test_patent_clusters_endpoint PASSED [ 58%]
-tests/test_innovation_scoring_and_patents.py::test_patent_trends_endpoint PASSED [ 61%]
-tests/test_innovation_scoring_and_patents.py::test_technology_emerging_endpoint PASSED [ 64%]
-tests/test_innovation_scoring_and_patents.py::test_technology_maturity_endpoint PASSED [ 67%]
-tests/test_innovation_scoring_and_patents.py::test_technology_competitors_endpoint PASSED [ 70%]
-tests/test_innovation_scoring_and_patents.py::test_scoring_calculate_endpoint PASSED [ 74%]
-tests/test_innovation_scoring_and_patents.py::test_scoring_get_by_project_id PASSED [ 77%]
-tests/test_innovation_scoring_and_patents.py::test_commercialization_recommendations PASSED [ 80%]
-tests/test_profile.py::test_profile_crud_and_components PASSED           [ 83%]
-tests/test_profile.py::test_invalid_history PASSED                       [ 87%]
-tests/test_profile.py::test_cross_user_isolation PASSED                  [ 90%]
-tests/test_trends.py::test_get_trends_topics PASSED                      [ 93%]
-tests/test_trends.py::test_get_trends_hotspots PASSED                    [ 96%]
-tests/test_trends.py::test_get_trends_citations PASSED                   [100%]
+tests/test_assets.py::test_publication_provider_failure PASSED           [ 15%]
+tests/test_assets.py::test_patent_provider_failure PASSED                [ 18%]
+tests/test_auth.py::test_registration_and_duplicate PASSED               [ 21%]
+tests/test_auth.py::test_login_and_me PASSED                             [ 24%]
+tests/test_auth.py::test_bad_password_and_tokens PASSED                  [ 27%]
+tests/test_auth.py::test_admin_rbac PASSED                               [ 30%]
+tests/test_auth.py::test_researcher_cannot_admin PASSED                  [ 33%]
+tests/test_funding.py::test_funding_list_and_search PASSED               [ 36%]
+tests/test_funding.py::test_personalized_recommendations_and_alerts PASSED [ 39%]
+tests/test_funding.py::test_admin_create_funding_opportunity PASSED      [ 42%]
+tests/test_funding.py::test_bookmark_profile_funding PASSED              [ 45%]
+tests/test_health.py::test_health PASSED                                 [ 48%]
+tests/test_innovation_scoring_and_patents.py::test_patent_search_endpoint PASSED [ 52%]
+tests/test_innovation_scoring_and_patents.py::test_patent_clusters_endpoint PASSED [ 55%]
+tests/test_innovation_scoring_and_patents.py::test_patent_trends_endpoint PASSED [ 58%]
+tests/test_innovation_scoring_and_patents.py::test_technology_emerging_endpoint PASSED [ 61%]
+tests/test_innovation_scoring_and_patents.py::test_technology_maturity_endpoint PASSED [ 64%]
+tests/test_innovation_scoring_and_patents.py::test_technology_competitors_endpoint PASSED [ 67%]
+tests/test_innovation_scoring_and_patents.py::test_scoring_calculate_endpoint PASSED [ 70%]
+tests/test_innovation_scoring_and_patents.py::test_scoring_get_by_project_id PASSED [ 73%]
+tests/test_innovation_scoring_and_patents.py::test_commercialization_recommendations PASSED [ 76%]
+tests/test_profile.py::test_profile_crud_and_components PASSED           [ 79%]
+tests/test_profile.py::test_invalid_history PASSED                       [ 82%]
+tests/test_profile.py::test_cross_user_isolation PASSED                  [ 85%]
+tests/test_trends.py::test_get_trends_topics PASSED                      [ 88%]
+tests/test_trends.py::test_get_trends_hotspots PASSED                    [ 91%]
+tests/test_trends.py::test_get_trends_citations PASSED                   [ 94%]
+tests/test_trends.py::test_trends_time_range_filter PASSED              [ 97%]
+tests/test_trends.py::test_trends_domain_breakdown PASSED                 [100%]
 
-====================== 31 passed, 0 failed in 45.32s ======================
+====================== 33 passed, 0 failed in 91.66s ======================
 ```
 
 ---
