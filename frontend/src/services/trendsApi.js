@@ -27,7 +27,8 @@ const MOCK_DOMAINS = [
 export async function fetchTopics() {
   try {
     const data = await api("/trends/topics");
-    return data.topics || data;
+    const topics = data.topics || data;
+    return (Array.isArray(topics) && topics.length > 0) ? topics : MOCK_TOPICS;
   } catch (error) {
     console.warn("Falling back to MOCK_TOPICS:", error);
     return MOCK_TOPICS;
@@ -37,7 +38,9 @@ export async function fetchTopics() {
 export async function fetchHotspotsAndDomains() {
   try {
     const data = await api("/trends/hotspots");
-    return { hotspots: data.hotspots || [], domains: data.domains || MOCK_DOMAINS };
+    const hotspots = (data.hotspots && data.hotspots.length > 0) ? data.hotspots : MOCK_HOTSPOTS;
+    const domains = (data.domains && data.domains.length > 0) ? data.domains : MOCK_DOMAINS;
+    return { hotspots, domains };
   } catch (error) {
     console.warn("Falling back to MOCK_HOTSPOTS:", error);
     return { hotspots: MOCK_HOTSPOTS, domains: MOCK_DOMAINS };
