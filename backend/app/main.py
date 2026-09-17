@@ -58,7 +58,7 @@ async def lifespan(app: FastAPI):
                 full_name="Platform Administrator",
                 email="admin@researchsphere.ai",
                 password_hash=hash_password("Admin@123456"),
-                role="administrator",
+                role=Role.ADMINISTRATOR.value,
                 is_active=True
             )
             db.add(admin)
