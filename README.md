@@ -13,7 +13,7 @@
 
 **An enterprise-grade, full-stack intelligence platform uniting academic research, patent commercialization, grant funding discovery, and technology trend forecasting.**
 
-[Live Demo](#-quickstart--deployment) • [Architecture](#-system-architecture) • [API Documentation](#-api-endpoints--contracts) • [Milestone Matrix](#-milestone-deliverables--audit)
+[Live Demo](https://innova-fund-research-funding-innova-seven.vercel.app/) • [Architecture](#-system-architecture) • [API Documentation](#-api-endpoints--contracts) • [Platform Feature Matrix](#-platform-feature-matrix)
 
 </div>
 
@@ -21,9 +21,10 @@
 
 ## 📑 Table of Contents
 - [Executive Overview](#-executive-overview)
+- [Live Demo Deployment](#-live-demo-deployment)
 - [Key Platform Capabilities](#-key-platform-capabilities)
 - [System Architecture](#-system-architecture)
-- [Milestone Deliverables & Audit](#-milestone-deliverables--audit)
+- [Platform Feature Matrix](#-platform-feature-matrix)
 - [Algorithmic Intelligence Models](#-algorithmic-intelligence-models)
 - [Technology Stack](#-technology-stack)
 - [Repository Structure](#-repository-structure)
@@ -124,14 +125,21 @@ graph TB
 
 ---
 
-## 📊 Milestone Deliverables & Audit
+## 🌐 Live Demo Deployment
 
-| Milestone | Modules & Scope | Status | Deliverables |
+The platform is deployed and accessible live:
+- 🚀 **Live Production Deployment**: [https://innova-fund-research-funding-innova-seven.vercel.app/](https://innova-fund-research-funding-innova-seven.vercel.app/)
+
+---
+
+## 📊 Platform Feature Matrix
+
+| Feature Domain | Modules & Scope | Status | Deliverables |
 | :--- | :--- | :---: | :--- |
-| **Release** | **Authentication, RBAC & Researcher Profiles** | `100% PASS` | Argon2id password hashing, OAuth2 Password-form flow, JWT Bearer tokens, 4 distinct roles, Profile CRUD, OpenAlex literature integration, and Patent provider abstractions. |
-| **Release** | **Multi-Source Funding & Trend Intelligence** | `100% PASS` | 6 funding stream aggregators, 5-criteria weighted grant matching engine, dynamic match percentage calculation, topic velocity growth bar charts, and citation hotspot analytics. |
-| **Release** | **Patent Landscape, TRL & Commercialization** | `100% PASS` | Patent clustering, filing velocity curves, Technology Readiness Levels (**TRL 1–9**), 5-pillar Innovation Index (0–100), and Spin-off vs. Licensing commercialization advisor. |
-| **Release** | **System Integration, AI Co-Pilot & DevOps** | `100% PASS` | Full platform routing integration, InnovaAI Co-Pilot assistant drawer, Admin management portal, Docker Compose containerization, and 33/33 Pytest automated test pass. |
+| **Identity & Access** | **Authentication, RBAC & Researcher Profiles** | `100% PASS` | Argon2id password hashing, OAuth2 Password-form flow, JWT Bearer tokens, 4 distinct roles, Profile CRUD, OpenAlex literature integration, and Patent provider abstractions. |
+| **Funding Discovery** | **Multi-Source Funding & Trend Intelligence** | `100% PASS` | 6 funding stream aggregators, 5-criteria weighted grant matching engine, dynamic match percentage calculation, topic velocity growth bar charts, and citation hotspot analytics. |
+| **IP & Scoring** | **Patent Landscape, TRL & Commercialization** | `100% PASS` | Patent clustering, filing velocity curves, Technology Readiness Levels (**TRL 1–9**), 5-pillar Innovation Index (0–100), and Spin-off vs. Licensing commercialization advisor. |
+| **DevOps & AI** | **System Integration, AI Co-Pilot & DevOps** | `100% PASS` | Full platform routing integration, InnovaAI Co-Pilot assistant drawer, Admin management portal, Docker Compose containerization, and 33/33 Pytest automated test pass. |
 
 ---
 
