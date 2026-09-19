@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  innovation-scoring-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: innovation_scoring_service
+    ports:
+      - "8004:8004"
+    environment:
+      - STANDALONE=true
+      - SIGNAL_SOURCE=local
+      - DATABASE_URL=sqlite:///./innovation_scoring.db
+      - HOST=0.0.0.0
+      - PORT=8004
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
