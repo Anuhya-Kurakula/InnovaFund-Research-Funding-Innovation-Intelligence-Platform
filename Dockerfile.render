@@ -1,0 +1,28 @@
+# Deployment image for the API.
+#
+# Built from the repository root (not from backend/) because the backend
+# imports the innovation scoring engine from ../../innovation-scoring-service.
+# Building from backend/ alone leaves that folder out of the image, which makes
+# /api/scoring and /api/portfolio fail at runtime.
+#
+# Render settings that match this file:
+#   Root Directory : (leave blank)
+#   Dockerfile Path: Dockerfile.render
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install dependencies first so this layer is cached between deploys.
+COPY backend/requirements.txt ./backend/requirements.txt
+RUN pip install --no-cache-dir -r backend/requirements.txt
+
+# Both packages are needed: the API and the scoring engine it imports.
+COPY backend/ ./backend/
+COPY innovation-scoring-service/ ./innovation-scoring-service/
+
+WORKDIR /app/backend
+
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

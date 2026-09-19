@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "National AI & Machine Learning Advancement Grant",
+    "description": "Government funding aimed at accelerating foundational and applied AI research, with focus on trustworthy AI, deep learning models, and healthcare applications.",
+    "source_type": "Government Grants",
+    "agency": "National Science Foundation (NSF)",
+    "amount": "$750,000",
+    "deadline": "2026-11-15",
+    "eligibility_criteria": "Principal Investigators at accredited academic or research institutions with demonstrated track record in AI/ML.",
+    "tags": ["AI", "Machine Learning", "Healthcare", "Deep Learning", "Trustworthy AI"],
+    "application_url": "https://www.grants.gov"
+  },
+  {
+    "id": 2,
+    "title": "Horizon Europe Next-Gen Biotechnology Research Fellowship",
+    "description": "Multi-year fellowship program supporting international bio-innovation, gene therapy development, CRISPR base editing, and synthetic biology.",
+    "source_type": "International Funding Agencies",
+    "agency": "European Research Council (ERC)",
+    "amount": "€1,200,000",
+    "deadline": "2026-10-30",
+    "eligibility_criteria": "Open to international researchers collaborating with European institutions. Postdoctoral researchers and senior PIs eligible.",
+    "tags": ["Biotech", "Genomics", "CRISPR", "Synthetic Biology", "Bio-innovation"],
+    "application_url": "https://ec.europa.eu"
+  },
+  {
+    "id": 3,
+    "title": "Clean Energy & Battery Technology Commercialization Fund",
+    "description": "Innovation fund targeted at early-stage research in solid-state batteries, perovskite solar tandem cells, and clean energy storage solutions.",
+    "source_type": "Innovation Funds",
+    "agency": "ARPA-E (Department of Energy)",
+    "amount": "$1,500,000",
+    "deadline": "2026-12-01",
+    "eligibility_criteria": "Academic spin-offs, university labs, and early-stage clean-tech startups.",
+    "tags": ["Renewable Energy", "Batteries", "Clean Energy", "Solar", "Energy Storage"],
+    "application_url": "https://arpa-e.energy.gov"
+  },
+  {
+    "id": 4,
+    "title": "Quantum Computing & Information Sciences Challenge",
+    "description": "Research council initiative to explore fault-tolerant quantum algorithms, topological qubits, and room-temperature qubit coherence.",
+    "source_type": "Research Councils",
+    "agency": "Engineering & Physical Sciences Research Council (EPSRC)",
+    "amount": "£500,000",
+    "deadline": "2026-09-25",
+    "eligibility_criteria": "UK academic institutions and international co-investigators specializing in quantum physics and computer science.",
+    "tags": ["Quantum Computing", "Quantum Algorithms", "Physics", "Qubits"],
+    "application_url": "https://www.ukri.org"
+  },
+  {
+    "id": 5,
+    "title": "Deep Tech Founders Accelerator cohort 2026",
+    "description": "Accelerator program for university researchers and founders translating scientific breakthroughs into commercial products. Includes $150k equity investment, mentorship, and lab access.",
+    "source_type": "Startup Accelerators",
+    "agency": "Y Combinator Deep Tech Track",
+    "amount": "$150,000",
+    "deadline": "2026-10-15",
+    "eligibility_criteria": "Founding teams with proprietary technology intellectual property, patents, or peer-reviewed research.",
+    "tags": ["Deep Tech", "Commercialization", "Startups", "AI", "Biotech", "Hardware"],
+    "application_url": "https://www.ycombinator.com"
+  },
+  {
+    "id": 6,
+    "title": "Frontier Technology Venture Catalyst Fund",
+    "description": "Venture program providing non-dilutive grant plus seed co-investment for breakthrough hard-tech, semiconductor, and neuro-technology research.",
+    "source_type": "Venture Programs",
+    "agency": "Breakthrough Energy Ventures",
+    "amount": "$2,000,000",
+    "deadline": "2026-11-30",
+    "eligibility_criteria": "Early-stage ventures and research labs preparing for Series A fundraising with high societal impact.",
+    "tags": ["Venture Capital", "Hard Tech", "Neuroscience", "Semiconductors", "Commercialization"],
+    "application_url": "https://breakthroughenergy.org"
+  }
+]
