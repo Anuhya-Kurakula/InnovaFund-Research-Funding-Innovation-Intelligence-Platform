@@ -1,0 +1,59 @@
+"""
+Unified models re-export module.
+Imports canonical models defined in backend/models.py.
+"""
+from models import (
+    Base,
+    Role,
+    User,
+    UserProfile,
+    Organization,
+    ResearchProfile,
+    ResearchDomain,
+    ResearchInterest,
+    Keyword,
+    TechnologyArea,
+    ResearchHistory,
+    Publication,
+    Patent,
+    profile_publications,
+    profile_patents,
+    profile_funding,
+    FundingSource,
+    FundingOpportunity,
+    EligibilityCriteria,
+    TechnologyDomain,
+    TechnologyMaturity,
+    CompetitorActivity,
+    Session,
+    AuditLog,
+    Notification
+)
+
+__all__ = [
+    "Base",
+    "Role",
+    "User",
+    "UserProfile",
+    "Organization",
+    "ResearchProfile",
+    "ResearchDomain",
+    "ResearchInterest",
+    "Keyword",
+    "TechnologyArea",
+    "ResearchHistory",
+    "Publication",
+    "Patent",
+    "profile_publications",
+    "profile_patents",
+    "profile_funding",
+    "FundingSource",
+    "FundingOpportunity",
+    "EligibilityCriteria",
+    "TechnologyDomain",
+    "TechnologyMaturity",
+    "CompetitorActivity",
+    "Session",
+    "AuditLog",
+    "Notification"
+]
